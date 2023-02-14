@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::middleware(['admin_auth'])->group(function () {
         // category
-        Route::prefix('category')->group(function () {
+        Route::prefix('admin/category')->group(function () {
             Route::get('list', [CategoryController::class, 'list'])->name('category#list');
         });
 
