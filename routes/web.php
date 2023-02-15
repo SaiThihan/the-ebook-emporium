@@ -48,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('admin')->group(function(){
             // profile
             Route::get('details',[AdminController::class,'details'])->name('admin#details');
+            Route::get('edit',[AdminController::class,'edit'])->name('admin#edit');
+            Route::post('updateUserDetails',[AdminController::class,'updateUserDetails'])->name('admin#updateUserDetails');
+            Route::get('changePasswordPage',[AdminController::class,'changePasswordPage'])->name('admin#changePasswordPage');
+            Route::post('changePassword',[AdminController::class,'changePassword'])->name('admin#changePassword');
         });
     });
 
