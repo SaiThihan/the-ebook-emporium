@@ -17,11 +17,12 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
-            $table->string('category');
-            $table->longText('description');
-            $table->integer('price');
-            $table->string('book');
+            $table->text('description');
             $table->string('image');
+            $table->decimal('price', 8, 2);
+            $table->string('url_link');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

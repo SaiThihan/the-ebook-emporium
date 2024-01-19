@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'title',
-        'category',
-        'description',
-        'author',
-        'price',
-        'book',
-        'image',
-    ];
+    protected $fillable = ['title', 'author', 'description', 'image', 'price', 'url_link', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

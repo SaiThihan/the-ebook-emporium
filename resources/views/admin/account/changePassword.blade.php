@@ -11,12 +11,12 @@
                 </div>
             </a>
             @if(session('passwordChangeSuccess'))
-                <div class="alert alert-warning alert-dismissible fade show col-8 h-50 offset-2" role="alert">
+                <div class="alert alert-warning alert-dismissible" role="alert">
                     <strong><i class="fa-solid fa-circle-check me-2"></i>{{ session('passwordChangeSuccess') }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @elseif (session('passwordNotMatch'))
-            <div class="alert alert-warning alert-dismissible fade show col-8 h-50 offset-2" role="alert">
+            <div class="alert alert-warning alert-dismissible" role="alert">
                 <strong><i class="fa-solid fa-circle-xmark me-2"></i>{{ session('passwordNotMatch') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

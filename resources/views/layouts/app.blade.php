@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    @yield('content');
+    @yield('content')
 
     {{-- login css  --}}
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>

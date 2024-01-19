@@ -3,9 +3,8 @@
 @section('title', 'User Details')
 
 @section('content')
-    <section style="background-color: #eee;">
-        <div class="container py-5" style="height: 90vh">
-            {{-- <button type="button" class="btn btn-primary ms-1 mb-5">Message</button> --}}
+    <section>
+        <div class="container">
             <div class="row">
                 <a href="{{ route('category#list') }}">
                     <div class="btn btn-primary mb-5 ms-1 col-1 ">
@@ -13,7 +12,7 @@
                     </div>
                 </a>
                 @if(session('updateSuccess'))
-                <div class="alert alert-warning alert-dismissible fade show col-4 offset-6 h-50" role="alert">
+                <div class="alert alert-warning alert-dismissible" role="alert">
                     <strong><i class="fa-solid fa-circle-check me-2"></i>{{ session('updateSuccess') }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>

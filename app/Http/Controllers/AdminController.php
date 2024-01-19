@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    // direct category list page
-    function list(){
-        return view('admin.caregory');
-    }
 
     // direct user home page
     public function home(){
@@ -69,6 +65,27 @@ class AdminController extends Controller
             return back()->with(['passwordChangeSuccess' => 'Password changed...']);
         }
         return back()->with(['passwordNotMatch' => 'Incorrect old password...']);
+    }
+
+    // direct customer list page
+    public function customerList(){
+        $customers = User::whereNotIn('id',[1])->orderBy('id','desc')->get();
+        $count = 1;
+        return view('admin.customer.list',compact('customers','count'));
+    }
+
+    // change to admin
+    public function changeToAdmin($id){
+        $role['role'] = 'admin';
+        User::where('id',$id)->update($role);
+        return back()->with(['userRoleChangeSuccess' => 'Role Changed....']);
+    }
+
+    // change to customer
+    public function changeToCustomer($id){
+        $role['role'] = 'user';
+        User::where('id',$id)->update($role);
+        return back()->with(['userRoleChangeSuccess' => 'Role Changed....']);
     }
 
     // user password validation

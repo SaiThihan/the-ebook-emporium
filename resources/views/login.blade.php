@@ -1,125 +1,110 @@
-@extends('layouts.app')
-
-@section('title', 'Login Page')
-
-@section('content')
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">login #07</h2>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="{{asset('storage/user_image/book-shelf.png');}}" rel="shortcut icon">
+        <title>Ebook Emporium | Digital Ebooks</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <!--====== Google Font ======-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+        <!--====== Vendor Css ======-->
+        <link rel="stylesheet" href="{{asset('css/user/vendor.css');}}">
+        <!--====== Utility-Spacing ======-->
+        <link rel="stylesheet" href="{{asset('css/user/utility.css');}}">
+        <!--====== App ======-->
+        <link rel="stylesheet" href="{{asset('css/user/app.css');}}">
+    </head>
+    <body style="background-image: url('{{ asset('storage/login-reg-bg.jpg') }}') !important; background-size: cover; background-repeat:no-repeat;">
+        <div class="preloader is-active">
+            <div class="preloader__wrap">
+                <img class="preloader__img" src="{{asset('storage/user_image/preloader.png');}}" alt="">
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="wrap d-md-flex">
-                        <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-                            <div class="text w-100">
-                                <h2>Welcome to login</h2>
-                                <p>Don't have an account?</p>
-                                <a href="{{ route('auth#registerPage') }}" class="btn btn-white btn-outline-white">Sign Up</a>
-                            </div>
-                        </div>
-                        <div class="login-wrap p-4 p-lg-5">
-                            <div class="d-flex">
-                                <div class="w-100">
-                                    <h3 class="mb-4">Sign In</h3>
-                                </div>
-                                <div class="w-100">
-                                    <p class="social-media d-flex justify-content-end">
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"><span
-                                                class="fa fa-facebook"></span></a>
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"><span
-                                                class="fa fa-twitter"></span></a>
-                                    </p>
+        </div>
+        <!--====== App Content ======-->
+        <div class="app-content">
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-30" style="margin-top:50px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary" style="color:white !important">Welcome To Ebook Emporium</h1>
                                 </div>
                             </div>
-                            <form action="{{ route('login') }}" class="signin-form" method="post">
-                                @csrf
-                                <div class="form-group">
-                                    <label class="label" for="email">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Username" name="email">
-                                </div>
-                                @error('email')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <label for="password" class="label">Password</label>
-                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-                                </div>
-                                @error('password')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                                <div class="form-group">
-                                    <input type="submit" class="form-control btn btn-primary submit px-3" value="Sign In">
-                                </div>
-                                {{-- <div class="form-group d-md-flex">
-                                    <div class="w-50 text-left">
-                                        <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-                                            <input type="checkbox" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="w-50 text-md-right">
-                                        <a href="#">Forgot Password</a>
-                                    </div>
-                                </div> --}}
-                            </form>
                         </div>
                     </div>
                 </div>
+                <!--====== End - Section Intro ======-->
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row row--center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="l-f-o" style="background-color:#FFFBEB;border-radius:10px;">
+                                    <div class="l-f-o__pad-box">
+                                        <h1 class="gl-h1" style="text-align: center;">SIGNIN</h1>
+                                        <span class="gl-text u-s-m-b-30" style="text-align: center;">If you have an account with us, please log in.</span>
+                                        <form class="l-f-o__form" action="{{ route('login') }}" method="post">
+                                            @csrf
+                                            <div class="u-s-m-b-30">
+                                                <label class="gl-label" for="login-email">E-MAIL *</label>
+                                                <input class="input-text input-text--primary-style @error('email') is-invalid @enderror" type="email" id="login-email" placeholder="Enter E-mail" value="{{ old('email') }}" name="email">
+                                                @error('email')
+                                                    <div class="invalid-feedback">
+                                                        <small style="color: red;">{{ $message }}</small>
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="u-s-m-b-30">
+                                                <label class="gl-label" for="login-password">PASSWORD *</label>
+                                                <input class="input-text input-text--primary-style @error('password') is-invalid @enderror" type="password" id="login-password" placeholder="Enter Password" name="password">
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        <small style="color: red;">{{ $message }}</small>
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="gl-inline">
+                                                <div class="u-s-m-b-30" style="text-align: center;">
+                                                    <button class="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <h1 class="gl-h1">I'M NEW CUSTOMER</h1>
+                                        <span class="gl-text u-s-m-b-30">By creating an account with our store, you will be able to move through the checkout process faster, store shipping addresses, view and track your orders in your account and more.</span>
+                                        <div class="u-s-m-b-15">
+                                            <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="{{ route('auth#registerPage') }}">CREATE AN ACCOUNT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
             </div>
+            <!--====== End - Section 2 ======-->
         </div>
-    </section>
-@endsection
-
-{{-- <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout> --}}
+        <!--====== End - App Content ======-->
+        </div>
+        </div>
+        <!--====== End - App Content ======-->
+        <!--====== Main Footer ======-->
+        </div>
+        <!--====== End - Main App ======-->
+        <!--====== Vendor Js ======-->
+        <script src="{{asset('js/user/vendor.js');}}"></script>
+        <!--====== jQuery Shopnav plugin ======-->
+        <script src="{{asset('js/user/jquery.shopnav.js');}}"></script>
+        <!--====== App ======-->
+        <script src="{{asset('js/user/app.js');}}"></script>
+    </body>
+</html>
